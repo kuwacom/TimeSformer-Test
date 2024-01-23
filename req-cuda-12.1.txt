@@ -1,0 +1,18 @@
+# ここは各マシーンに合わせて
+## なんか古いバージョンのtorchじゃないとだめらしい
+## https://github.com/facebookresearch/TimeSformer/issues/63
+# torch==1.8.1
+torch==1.8.0+cu121
+torchvision==2.1.2+cu121
+torchaudio==0.16.2+cu121
+
+# 以下テンプレ
+timm
+git+https://github.com/facebookresearch/fvcore
+simplejson
+einops
+av
+psutil
+scikit-learn
+opencv-python
+tensorboard
