@@ -12,7 +12,6 @@ from timm.models.vision_transformer import TimeSformer
 
 
 # モデルの設定
-model_name = 'timesformer_divST_8x32_224'
 num_classes = 1000  # クラス数は事前学習済みモデルのものに合わせる
 num_frames = 8  # フレーム数
 

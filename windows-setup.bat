@@ -1,6 +1,6 @@
 @REM venv をセットアップ
-py -3.7 -m venv venv-3.7
-.\venv-3.7\Scripts\activate
+py -3.10 -m venv venv
+.\venv-3.10\Scripts\activate
 
 @REM モジュールの準備
 pip install -r req.txt

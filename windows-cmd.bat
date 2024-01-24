@@ -1,1 +1,1 @@
-start .\venv-3.7\Scripts\activate
+start .\venv\Scripts\activate

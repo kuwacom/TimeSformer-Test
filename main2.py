@@ -1,11 +1,27 @@
 import torch
 import cv2
 import numpy as np
+from timesformer.models.vit import TimeSformer
 
 # timeSformerのモデルをダウンロード
-model = torch.hub.load('facebookresearch/TimeSformer', 'TimeSformer_divST_8x32_224', pretrained=True)
+model = TimeSformer(
+    img_size=224,
+    num_classes=400,
+    num_frames=8,
+    attention_type='divided_space_time', 
+    pretrained_model='./models/TimeSformer_divST_8x32_224_K400.pyth'
+    )
+
+# モデルを評価モードに設定
+model.eval()
+# カテゴリの名前を読み込む
+# categories = np.loadtxt('categories.txt', dtype=str)
+
+
+
 # カメラからの映像を取得
 capture = cv2.VideoCapture(0)
+
 
 def preprocess(video):
     # 動画を8フレームごとに分割
@@ -13,7 +29,7 @@ def preprocess(video):
     # 各フレームを224×224にリサイズ
     video = np.array([cv2.resize(frame, (224, 224)) for frame in video])
     # RGBからBGRに変換
-    video = video[:, :, :, ::-1]
+    # video = video[:, :, :, ::-1]
     # 正規化
     mean = np.array([0.485, 0.456, 0.406])
     std = np.array([0.229, 0.224, 0.225])
@@ -24,11 +40,6 @@ def preprocess(video):
     # テンソルに変換
     video = torch.from_numpy(video).float()
     return video
-
-    # モデルを評価モードに設定
-    model.eval()
-    # カテゴリの名前を読み込む
-    categories = np.loadtxt('categories.txt', dtype=str)
 
 while True:
     # カメラから1秒間の映像を取得
