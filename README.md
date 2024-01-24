@@ -34,3 +34,29 @@ windows-TimeSformer-setup.bat
 ```
 
 
+# モジュールエラーについて
+
+最新の torch バージョンでは絶対にバグが発生するため、以下の手順に沿ってファイルを変更してください。
+
+<br>
+
+https://github.com/facebookresearch/TimeSformer/issues/63
+
+上記のを例に `TimeSformer/Timesformer/models/resnet_helper.py` 内の
+```
+from torch.nn.modules.linear import _LinearWithBias
+```
+をコメントアウトしてください。
+
+
+https://github.com/NVIDIA/apex/issues/1048#issuecomment-877851575
+
+次に、上記のを例に `TimeSformer/Timesformer/models/vit_utils.py` 内の
+```
+from torch._six import container_abcs
+```
+を
+```
+import collections.abc as container_abcs
+```
+に置き換えてください。

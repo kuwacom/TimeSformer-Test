@@ -1,6 +1,7 @@
 # timeSformer vnev version
 # 動作チェックにどうぞ
 import torch
+from torch import inf
 from timesformer.models.vit import TimeSformer
 
 model = TimeSformer(
