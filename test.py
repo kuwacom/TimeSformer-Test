@@ -1,7 +1,6 @@
 # timeSformer vnev version
 # 動作チェックにどうぞ
 import torch
-from torch import inf
 from timesformer.models.vit import TimeSformer
 
 model = TimeSformer(
@@ -16,4 +15,4 @@ dummy_video = torch.randn(2, 3, 8, 224, 224) # (batch x channels x frames x heig
 
 pred = model(dummy_video,) # (2, 400)
 
-print(pred)
+print(dummy_video)
