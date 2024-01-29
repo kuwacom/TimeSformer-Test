@@ -6,10 +6,10 @@ py -3.10 -m venv venv
 pip install -r req.txt
 
 @REM TimeSformerをclone
-git clone https://github.com/facebookresearch/TimeSformer
-cd TimeSformer
-py setup.py build develop
-cd ../
+mim install mmengine
+mim install mmcv
+mim install mmdet
+mim install mmpose
 
 @REM create model file
 mkdir models

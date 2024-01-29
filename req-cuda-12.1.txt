@@ -4,12 +4,4 @@ torchvision==2.1.2+cu121
 torchaudio==0.16.2+cu121
 
 # 以下テンプレ
-timm
-git+https://github.com/facebookresearch/fvcore
-simplejson
-einops
-av
-psutil
-scikit-learn
-opencv-python
-tensorboard
+openmim
