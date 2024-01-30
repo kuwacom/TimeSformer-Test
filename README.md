@@ -2,61 +2,71 @@
 これは TimeSformer をテストする際に利用できるツールセットです。
 
 # How To Use
-現在は Windows のみサポートしています。
+公式のドキュメントをもとに環境を構築していきます
+https://mmaction2.readthedocs.io/en/latest/get_started/installation.html
 
-## やり方1
-この方法ではすべて自動で設定可能です。
+## Python環境の作成
+### 仮想環境の作成
+`venv`を利用して環境を構築していきます
 
-動作はCPU限定となります。(torch類がCPU)
+それぞれのOSにあったコマンドを実行してください
+(コマンド等が違う場合はその都度修正してください)
 
+> Windows
+```shell
+py -3.10 -m venv venv
 ```
-windows-setup.bat
-```
-
-をクリックすれば自動でセットアップが開始します。
-
-## やり方2
-この方法では反手動で設定可能です。
-
-初めに
-
-```
-windows-env-setup.bat
+> Linux
+```bash
+python3 -m venv venv
 ```
 
-上記のバッチを実行して、次に `req-cuda-12.1.txt` 等を利用して必要な python パッケージをインストールしていきます。
+### モジュールのインストール
+次にモジュールをインストールします
 
-※cuda等のtorchを使う場合は各マシンに合わせてインストールしてください。
+先ほど準備した仮想環境へアクティベートした状態で行ってください
 
-次に以下のバッチを実行して `TimeSformer` のセットアップをしてください。
 ```
-windows-TimeSformer-setup.bat
+./venv/Scripts/activate
+```
+#### Python モジュールのインストール
+最初に`Python`のモジュールのインストールをしていきます
+
+プリセットでは二つの環境のみ用意してありますのでそれ以外の場合は各自変更してください
+
+> CUDA 12.1
+```bash
+pip install -r req-cuda-12.1.txt
+```
+torch類は https://pytorch.org/get-started/locally/ より手動で入れます
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+> CUDA 12.1
+```bash
+pip install -r req.txt
 ```
 
+#### OpenMMLab のライブラリのインストール
+次に動作に必要な`OpenMMLab`のライブラリをインストールしていきます
 
-# モジュールエラーについて
-
-最新の torch バージョンでは絶対にバグが発生するため、以下の手順に沿ってファイルを変更してください。
-
-<br>
-
-https://github.com/facebookresearch/TimeSformer/issues/63
-
-上記のを例に `TimeSformer/Timesformer/models/resnet_helper.py` 内の
+```bash
+mim install mmengine
+mim install mmcv
+mim install mmdet
+mim install mmpose
 ```
-from torch.nn.modules.linear import _LinearWithBias
-```
-をコメントアウトしてください。
 
+### MMAction2 をインストール
+次に`MMAction2`本体をインストールしていきます
 
-https://github.com/NVIDIA/apex/issues/1048#issuecomment-877851575
+**こちらも先ほど準備した仮想環境へアクティベートした状態で行ってください**
 
-次に、上記のを例に `TimeSformer/Timesformer/models/vit_utils.py` 内の
+以下のコマンドは本プロジェクトの`root`にて行ってください
+```bash
+git clone https://github.com/open-mmlab/mmaction2.git
+cd mmaction2
+pip install -v -e .
 ```
-from torch._six import container_abcs
-```
-を
-```
-import collections.abc as container_abcs
-```
-に置き換えてください。
+
+以上でセットアップは終了です
