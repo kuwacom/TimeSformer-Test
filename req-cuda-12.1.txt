@@ -1,7 +1,7 @@
 # ここは各マシーンに合わせて
-torch==2.1.2+cu121
-torchvision==2.1.2+cu121
-torchaudio==0.16.2+cu121
+# torch==2.2.2+cu121
+# torchvision==2.2.2+cu121
+# torchaudio==0.17.0+cu121
 
 # 以下テンプレ
 openmim
