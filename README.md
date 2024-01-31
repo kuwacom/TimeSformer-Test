@@ -42,7 +42,7 @@ torch類は https://pytorch.org/get-started/locally/ より手動で入れます
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
-> CUDA 12.1
+> CPU
 ```bash
 pip install -r req.txt
 ```
