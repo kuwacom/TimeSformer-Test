@@ -161,8 +161,9 @@ def split_segment_detect(video_path, model, label_path, test_pipeline=None, proc
         text_added = []
         for idx, frame in enumerate(segment_frames):
             text_to_display = 'kuwacom/TimeSformer-Tools\n'
-            text_to_display += f'Segment: {start_frame} - {end_frame}\n'  # セグメントの範囲を表示
-            text_to_display += f'Frame: {start_frame + idx}\n'
+            text_to_display += f'Segment Interval: {segment_duration}s\n'
+            text_to_display += f'Segment Frame: {start_frame} ~ {end_frame}\n'  # セグメントの範囲を表示
+            text_to_display += f'Frame: {start_frame + idx}/{total_frames}\n'
             
             # リザルトを改行していい感じにする
             for idx, result in enumerate(results):
