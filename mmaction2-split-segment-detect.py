@@ -160,12 +160,14 @@ def split_segment_detect(video_path, model, label_path, test_pipeline=None, proc
 
         text_added = []
         for idx, frame in enumerate(segment_frames):
-            text_to_display = f'Segment: {start_frame} - {end_frame}\n'  # セグメントの範囲を表示
-
+            text_to_display = 'kuwacom/TimeSformer-Tools\n'
+            text_to_display += f'Segment: {start_frame} - {end_frame}\n'  # セグメントの範囲を表示
+            text_to_display += f'Frame: {start_frame + idx}\n'
+            
             # リザルトを改行していい感じにする
             for idx, result in enumerate(results):
                 text_to_display += f'{idx+1}. {result[0]}: {result[1]:.3f}\n'
-
+            
             # フレームにテキストを挿入
             frame_with_text = insert_text_on_frame(frame.copy(), text_to_display, font_scale=(frame_height / 1000))
             text_added.append(frame_with_text)
