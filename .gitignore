@@ -8,6 +8,9 @@ mmaction2
 # https://github.com/facebookresearch/TimeSformer#model-zoo
 models
 
+# temp files
+temp
+
 # python venv
 venv
 
